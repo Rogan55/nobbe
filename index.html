@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physiotherapie Nobbe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green-1: #0f9d58;
+      --green-2: #0b7d45;
+      --green-3: #e8f5ee;
+      --sand: #f8f5f0;
+      --stone: #0f172a;
+      --muted: #5f6b80;
+      --card: #ffffff;
+      --shadow: 0 18px 55px rgba(0, 0, 0, 0.08);
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Poppins", system-ui, -apple-system, sans-serif;
+      color: var(--stone);
+      background: var(--sand);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(248, 245, 240, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+    }
+    .nav {
+      width: 100%;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 800;
+      font-size: 21px;
+      letter-spacing: 0.02em;
+    }
+    .brand img {
+      height: 82px;
+      width: 82px;
+      object-fit: cover;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+    }
+    .menu {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-weight: 500;
+      color: var(--muted);
+    }
+    .menu a {
+      position: relative;
+      padding: 8px 0;
+    }
+    .menu a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 2px;
+      width: 100%;
+      background: linear-gradient(90deg, var(--green-1), var(--green-2));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.2s ease;
+    }
+    .menu a:hover::after { transform: scaleX(1); }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(circle at 18% 20%, rgba(15, 157, 88, 0.18), transparent 35%), linear-gradient(135deg, #f3fbf6 0%, #fdfbf7 100%);
+    }
+    .hero::before, .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 80% 10%, rgba(11, 125, 69, 0.12), transparent 30%);
+      pointer-events: none;
+    }
+    .hero::after {
+      background: radial-gradient(circle at 20% 70%, rgba(15, 157, 88, 0.1), transparent 32%);
+    }
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 20px 70px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      align-items: center;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(15, 157, 88, 0.12);
+      color: var(--green-2);
+      font-weight: 600;
+      font-size: 13px;
+    }
+    .hero h1 {
+      margin: 14px 0 16px;
+      font-size: clamp(32px, 6vw, 48px);
+      line-height: 1.2;
+      color: var(--stone);
+    }
+    .quote {
+      display: block;
+      font-weight: 600;
+      color: var(--green-2);
+      margin: 0 0 16px;
+      position: relative;
+      padding-left: 14px;
+    }
+    .quote::before {
+      content: "\"";
+      position: absolute;
+      left: -2px;
+      top: -6px;
+      color: var(--green-1);
+      font-size: 24px;
+    }
+    .quote::after {
+      content: "\"";
+      position: relative;
+      margin-left: 6px;
+      color: var(--green-1);
+      font-size: 24px;
+    }
+    .actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 18px;
+      border-radius: 14px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--green-1), var(--green-2));
+      color: white;
+      box-shadow: 0 14px 30px rgba(15, 157, 88, 0.25);
+    }
+    .btn-ghost {
+      background: white;
+      color: var(--stone);
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(15, 23, 42, 0.06);
+    }
+    .team-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--green-1), var(--green-2));
+      display: grid;
+      place-items: center;
+      color: white;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      box-shadow: 0 12px 24px rgba(15, 157, 88, 0.3);
+    }
+    .section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 70px 20px;
+      display: none;
+    }
+    .section.active { display: block; }
+    .section h2 {
+      margin: 0 0 12px;
+      font-size: 28px;
+      color: var(--stone);
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+    .gallery .tile {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      min-height: 160px;
+      background: linear-gradient(135deg, rgba(15, 157, 88, 0.28), rgba(11, 125, 69, 0.64));
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(15, 23, 42, 0.06);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .callout {
+      padding: 22px;
+      background: linear-gradient(135deg, var(--green-1), var(--green-2));
+      color: white;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .contact-card {
+      padding: 20px;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(15, 23, 42, 0.06);
+    }
+    .map {
+      margin-top: 14px;
+      min-height: 180px;
+      border-radius: 14px;
+      background: radial-gradient(circle at 50% 30%, rgba(15, 157, 88, 0.3), rgba(11, 125, 69, 0.8));
+      position: relative;
+      overflow: hidden;
+    }
+    footer {
+      border-top: 1px solid rgba(15, 23, 42, 0.06);
+      padding: 26px 20px 34px;
+      text-align: center;
+      color: var(--muted);
+      background: #f6f3ed;
+      margin-top: 40px;
+    }
+    @media (max-width: 720px) {
+      .menu { display: none; }
+      .nav { justify-content: space-between; }
+      header { position: sticky; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <a class="brand" href="#top">
+        <img src="logo.jpg" alt="Praxis Logo">
+        <span>Physiotherapie Nobbe</span>
+      </a>
+      <div class="menu">
+        <a href="#team">Unser Team</a>
+        <a href="#galerie">Galerie</a>
+        <a href="#kontakt">Kontakt</a>
+        <a href="#anfahrt">Anfahrt</a>
+        <a href="#datenschutz">Datenschutz</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow">Physiotherapie Nobbe</div>
+          <h1>Herzlich Willkommen</h1>
+          <span class="quote">Nur in der Bewegung, so schmerzlich sie sei, ist Leben!</span>
+          <p style="margin:0 0 12px;">Herzlich Willkommen in unserer Praxis fuer Physiotherapie und Massage...</p>
+          <p style="margin:0 0 12px;">...sagen Andrea & Thorsten Nobbe und Team!</p>
+          <p style="margin:0 0 12px;">Wir freuen uns, Sie in unserer Praxis begruessen zu duerfen. Durch unsere Fachkompetenz und unser Engagement unseres Teams wollen wir Ihnen helfen, Ihr persoenliches Gesundheitsziel moeglichst schnell zu erreichen.</p>
+          <p style="margin:0 0 12px;">Ihre persoenliche Lebensqualitaet steht fuer uns an erster Stelle!</p>
+          <p style="margin:0 0 12px;">Unser Leistungsspektrum in der Physiotherapie erstreckt sich ueber alle gaengigen anerkannten physiotherapeutischen Anwendungen und Massagen wie z.B.: Manuelle Therapie, Lymphdrainage, Neurologische Techniken wie Bobath - Therapie, PNF, Fussreflexzonenmassage, klassische Massage, Skoliosebehandlungen nach Schroth, Kindertherapie nach Bobath gehoeren aufgrund persoenlicher Weiterbildungen sowie spezifisch anerkannten Qualifikationen zu unserem speziellen Angebotsspektrum.</p>
+          <p style="margin:0 0 12px;">Da wir dem Sport sehr verbunden sind, betreuen wir insbesondere Sportler/Leistungssportler.</p>
+          <p style="margin:0 0 18px;">Wir freuen uns bereits jetzt auf Ihr Kommen!</p>
+          <p style="margin:0 0 18px;">Andrea & Thorsten Nobbe und Team</p>
+        </div>
+        <div class="card" style="padding:0; overflow:hidden;">
+          <img src="Praxis.jpg" alt="Praxis" style="width:100%; height:100%; object-fit:cover; display:block;">
+        </div>
+      </div>
+    </section>
+
+    <section id="team" class="section">
+      <h2>Unser Team</h2>
+      <div class="cards">
+        <div class="card">
+          <div class="team-head">
+            <div class="avatar">TN</div>
+            <div><strong>Thorsten Nobbe</strong></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="team-head">
+            <div class="avatar">AN</div>
+            <div><strong>Andrea Nobbe</strong></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="team-head">
+            <div class="avatar">AS</div>
+            <div><strong>Anna Lea Skusa</strong></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="team-head">
+            <div class="avatar">NV</div>
+            <div><strong>Niklas Voigt</strong></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="team-head">
+            <div class="avatar">PN</div>
+            <div><strong>Patrick Nobbe</strong></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="team-head">
+            <div class="avatar">DN</div>
+            <div><strong>David Nobbe</strong></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="team-head">
+            <div class="avatar">NH</div>
+            <div><strong>Niklas Heitmann</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="galerie" class="section">
+      <h2>Galerie</h2>
+      <div class="gallery">
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+      </div>
+    </section>
+
+    <section id="kontakt" class="section">
+      <h2>Kontakt</h2>
+      <div class="contact-grid">
+        <div class="callout">
+          <h3 style="margin-top:0;">Haben Sie Fragen, Probleme oder Wünsche?</h3>
+          <p style="margin:0;">Dann melden Sie sich doch einfach direkt per Telefon oder E-Mail.</p>
+          <p style="margin:12px 0 0;">Sedanstraße 1, 32257 Bünde</p>
+          <p style="margin:6px 0 0;">Tel.: 05223/7923850<br>Fax.: 05223/7923851<br>E-Mail: physiotherapie-nobbe@gmx.de</p>
+        </div>
+        <div class="contact-card">
+          <h4 style="margin-top:0;">Nachricht</h4>
+          <form>
+            <div style="display:grid; gap:10px;">
+              <input type="text" name="name" placeholder="Ihr Name" required style="padding:12px 12px; border-radius:12px; border:1px solid rgba(15,23,42,0.08);">
+              <input type="email" name="email" placeholder="Ihre E-Mail" required style="padding:12px 12px; border-radius:12px; border:1px solid rgba(15,23,42,0.08);">
+              <textarea name="message" placeholder="Ihre Nachricht" rows="4" style="padding:12px 12px; border-radius:12px; border:1px solid rgba(15,23,42,0.08); resize: vertical;"></textarea>
+              <button class="btn btn-primary" type="submit" style="width:100%;">Senden</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="anfahrt" class="section">
+      <h2>Anfahrt</h2>
+      <div class="contact-grid">
+        <div class="card">
+          <strong>Adresse:</strong><br><br>
+          Sedanstraße 1<br>
+          32257 Bünde<br>
+          Deutschland<br>
+          Tel.: 05223/7923850<br><br>
+          Kostenfreie Parkplätze befinden sich direkt am Haus (Ecke Sedanstraße/Eschstraße) sowie gegenüberliegende Parkbuchten in den angrenzenden Straßen. Weitere kostenfreie Parkplätze finden Sie zudem am Stadtgarten; ca. 2-3 Gehminuten entfernt.
+        </div>
+        <div class="card">
+          <div class="map"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="datenschutz" class="section">
+      <h2>Datenschutz</h2>
+      <div class="card">
+        <p style="margin-top:0;">Datenschutz<br>Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p>
+        <p>Die Nutzung unserer Website ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit auf unseren Seiten personenbezogene Daten (beispielsweise Name, Anschrift oder E-Mail-Adressen) erhoben werden, erfolgt dies, soweit möglich, stets auf freiwilliger Basis. Diese Daten werden ohne Ihre ausdrückliche Zustimmung nicht an Dritte weitergegeben.</p>
+        <p>Wir weisen darauf hin, dass die Datenübertragung im Internet (z.B. bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich.</p>
+        <p>Cookies<br>Die Internetseiten verwenden teilweise so genannte Cookies. Cookies richten auf Ihrem Rechner keinen Schaden an und enthalten keine Viren. Cookies dienen dazu, unser Angebot nutzerfreundlicher, effektiver und sicherer zu machen. Cookies sind kleine Textdateien, die auf Ihrem Rechner abgelegt werden und die Ihr Browser speichert.</p>
+        <p>Die meisten der von uns verwendeten Cookies sind so genannte „Session-Cookies“. Sie werden nach Ende Ihres Besuchs automatisch gelöscht. Andere Cookies bleiben auf Ihrem Endgerät gespeichert, bis Sie diese löschen. Diese Cookies ermöglichen es uns, Ihren Browser beim nächsten Besuch wiederzuerkennen.</p>
+        <p>Sie können Ihren Browser so einstellen, dass Sie über das Setzen von Cookies informiert werden und Cookies nur im Einzelfall erlauben, die Annahme von Cookies für bestimmte Fälle oder generell ausschließen sowie das automatische Löschen der Cookies beim Schließen des Browser aktivieren. Bei der Deaktivierung von Cookies kann die Funktionalität dieser Website eingeschränkt sein.</p>
+        <p>Server-Log- Files<br>Der Provider der Seiten erhebt und speichert automatisch Informationen in so genannten Server-Log Files, die Ihr Browser automatisch an uns übermittelt. Dies sind:</p>
+        <ul style="margin:0 0 12px 20px; color: var(--muted);">
+          <li>Browsertyp und Browserversion</li>
+          <li>verwendetes Betriebssystem</li>
+          <li>Referrer URL</li>
+          <li>Hostname des zugreifenden Rechners</li>
+          <li>Uhrzeit der Serveranfrage</li>
+        </ul>
+        <p>Diese Daten sind nicht bestimmten Personen zuordenbar. Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen. Wir behalten uns vor, diese Daten nachträglich zu prüfen, wenn uns konkrete Anhaltspunkte für eine rechtswidrige Nutzung bekannt werden.</p>
+        <p>Kontaktformular<br>Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
+        <p>Facebook-Plugins (Like-Button)<br>Auf unseren Seiten sind Plugins des sozialen Netzwerks Facebook, Anbieter Facebook Inc., 1 Hacker Way, Menlo Park, California 94025, USA, integriert. Die Facebook-Plugins erkennen Sie an dem Facebook-Logo oder dem "Like-Button" ("Gefällt mir") auf unserer Seite. Eine Übersicht über die Facebook-Plugins finden Sie hier: https://developers.facebook.com/docs/plugins/.</p>
+        <p>Wenn Sie unsere Seiten besuchen, wird über das Plugin eine direkte Verbindung zwischen Ihrem Browser und dem Facebook-Server hergestellt. Facebook erhält dadurch die Information, dass Sie mit Ihrer IPAdresse unsere Seite besucht haben. Wenn Sie den Facebook "Like-Button" anklicken während Sie in Ihrem Facebook-Account eingeloggt sind, können Sie die Inhalte unserer Seiten auf Ihrem Facebook-Profil verlinken. Dadurch kann Facebook den Besuch unserer Seiten Ihrem Benutzerkonto zuordnen. Wir weisen darauf hin, dass wir als Anbieter der Seiten keine Kenntnis vom Inhalt der übermittelten Daten sowie deren Nutzung durch Facebook erhalten. Weitere Informationen hierzu finden Sie in der Datenschutzerklärung von Facebook unter https://de-de.facebook.com/policy.php.</p>
+        <p>Wenn Sie nicht wünschen, dass Facebook den Besuch unserer Seiten Ihrem Facebook-Nutzerkonto zuordnen kann, loggen Sie sich bitte aus Ihrem Facebook-Benutzerkonto aus.</p>
+        <p>SSL-Verschlüsselung<br>Diese Seite nutzt aus Gründen der Sicherheit und zum Schutz der Übertragung vertraulicher Inhalte, wie zum Beispiel der Anfragen, die Sie an uns als Seitenbetreiber senden, eine SSL-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von "http://" auf "https://" wechselt und an dem Schloss-Symbol in Ihrer Browserzeile.</p>
+        <p>Wenn die SSL Verschlüsselung aktiviert ist, können die Daten, die Sie an uns übermitteln, nicht von Dritten mitgelesen werden.</p>
+        <p style="margin-bottom:0;">Quelle: eRecht24</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Physiotherapie Nobbe · Sedanstraße 1 · 32257 Bünde · Tel.: 05223/7923850</span>
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll('.section');
+    function showSection(id) {
+      sections.forEach(sec => sec.classList.remove('active'));
+      const target = document.getElementById(id);
+      if (target) {
+        target.classList.add('active');
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        history.replaceState(null, "", '#' + id);
+      }
+    }
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', e => {
+        const id = link.getAttribute('href').replace('#', '');
+        if (id) {
+          e.preventDefault();
+          showSection(id);
+        }
+      });
+    });
+    window.addEventListener('load', () => {
+      const initial = window.location.hash.replace('#', '');
+      if (initial) {
+        showSection(initial);
+      }
+    });
+  </script>
+</body>
+</html>
