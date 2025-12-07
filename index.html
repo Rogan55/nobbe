@@ -260,6 +260,13 @@
       position: relative;
       overflow: hidden;
     }
+    .map iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
     footer {
       border-top: 1px solid rgba(15, 23, 42, 0.06);
       padding: 26px 20px 34px;
@@ -284,6 +291,8 @@
       </a>
       <div class="menu">
         <a href="#team">Unser Team</a>
+        <a href="#leistungen">Unsere Leistungen</a>
+        <a href="#privat">Privat-/Beihilfe Patienten</a>
         <a href="#galerie">Galerie</a>
         <a href="#kontakt">Kontakt</a>
         <a href="#anfahrt">Anfahrt</a>
@@ -299,11 +308,11 @@
           <div class="eyebrow">Physiotherapie Nobbe</div>
           <h1>Herzlich Willkommen</h1>
           <span class="quote">Nur in der Bewegung, so schmerzlich sie sei, ist Leben!</span>
-          <p style="margin:0 0 12px;"><strong>Herzlich Willkommen in unserer Praxis fuer Physiotherapie und Massage...</strong></p>
+          <p style="margin:0 0 12px;"><strong>Herzlich Willkommen in unserer Praxis für Physiotherapie und Massage...</strong></p>
           <p style="margin:0 0 12px;"><strong>...sagen Andrea & Thorsten Nobbe und Team!</strong></p>
-          <p style="margin:0 0 12px;"><strong>Wir freuen uns, Sie in unserer Praxis begruessen zu duerfen. Durch unsere Fachkompetenz und unser Engagement unseres Teams wollen wir Ihnen helfen, Ihr persoenliches Gesundheitsziel moeglichst schnell zu erreichen.</strong></p>
-          <p style="margin:0 0 12px;">Ihre persoenliche Lebensqualitaet steht fuer uns an erster Stelle!</p>
-          <p style="margin:0 0 12px;">Unser Leistungsspektrum in der Physiotherapie erstreckt sich ueber alle gaengigen anerkannten physiotherapeutischen Anwendungen und Massagen wie z.B.:</p>
+          <p style="margin:0 0 12px;"><strong>Wir freuen uns, Sie in unserer Praxis begrüßen zu dürfen. Durch unsere Fachkompetenz und unser Engagement unseres Teams wollen wir Ihnen helfen, Ihr persönliches Gesundheitsziel möglichst schnell zu erreichen.</strong></p>
+          <p style="margin:0 0 12px;">Ihre persönliche Lebensqualität steht für uns an erster Stelle!</p>
+          <p style="margin:0 0 12px;">Unser Leistungsspektrum in der Physiotherapie erstreckt sich über alle gängigen anerkannten physiotherapeutischen Anwendungen und Massagen wie z.B.:</p>
           <ul style="margin:0 0 12px 18px; color: var(--stone);">
             <li>Manuelle Therapie</li>
             <li>Lymphdrainage</li>
@@ -314,7 +323,7 @@
             <li>Skoliosebehandlungen nach Schroth</li>
             <li>Kindertherapie nach Bobath</li>
           </ul>
-          <p style="margin:0 0 12px;">Diese Anwendungen gehoeren aufgrund persoenlicher Weiterbildungen sowie spezifisch anerkannten Qualifikationen zu unserem speziellen Angebotsspektrum.</p>
+          <p style="margin:0 0 12px;">Diese Anwendungen gehören aufgrund persönlicher Weiterbildungen sowie spezifisch anerkannten Qualifikationen zu unserem speziellen Angebotsspektrum.</p>
           <p style="margin:0 0 12px;">Da wir dem Sport sehr verbunden sind, betreuen wir insbesondere Sportler/Leistungssportler.</p>
           <p style="margin:0 0 18px;">Wir freuen uns bereits jetzt auf Ihr Kommen!</p>
           <p style="margin:0 0 18px;">Andrea & Thorsten Nobbe und Team</p>
@@ -322,6 +331,44 @@
         <div class="card" style="padding:0; overflow:hidden;">
           <img src="Praxis.jpg" alt="Praxis" style="width:100%; height:100%; object-fit:cover; display:block;">
         </div>
+      </div>
+    </section>
+
+    <section id="leistungen" class="section">
+      <h2>Unsere Leistungen</h2>
+      <div class="cards">
+        <div class="card">
+          <strong>Physiotherapie</strong>
+          <ul style="margin:12px 0 0 18px; color: var(--stone);">
+            <li>Manuelle Therapie</li>
+            <li>PNF und Bobath-Therapie</li>
+            <li>Skoliosebehandlung nach Schroth</li>
+          </ul>
+        </div>
+        <div class="card">
+          <strong>Massage &amp; Regeneration</strong>
+          <ul style="margin:12px 0 0 18px; color: var(--stone);">
+            <li>Klassische Massage</li>
+            <li>Lymphdrainage</li>
+            <li>Fussreflexzonenmassage</li>
+          </ul>
+        </div>
+        <div class="card">
+          <strong>Spezialangebote</strong>
+          <ul style="margin:12px 0 0 18px; color: var(--stone);">
+            <li>Kindertherapie nach Bobath</li>
+            <li>Sportphysiotherapie</li>
+            <li>Rehabilitation nach Verletzungen</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="privat" class="section">
+      <h2>Privat-/Beihilfe Patienten</h2>
+      <div class="card">
+        <p style="margin-top:0;">Wir betreuen Privat- und Beihilfe-Patienten individuell und stimmen Therapie und Frequenz mit Ihnen ab. Bitte bringen Sie zum Ersttermin Ihre Verordnung und relevante Befunde mit.</p>
+        <p style="margin:0;">Fragen zu Kosten, Erstattungen oder Terminen? Wir beraten Sie gern telefonisch unter 05223/7923850 oder per E-Mail an physiotherapie-nobbe@gmx.de.</p>
       </div>
     </section>
 
@@ -420,7 +467,15 @@
           Kostenfreie Parkplätze befinden sich direkt am Haus (Ecke Sedanstraße/Eschstraße) sowie gegenüberliegende Parkbuchten in den angrenzenden Straßen. Weitere kostenfreie Parkplätze finden Sie zudem am Stadtgarten; ca. 2-3 Gehminuten entfernt.
         </div>
         <div class="card">
-          <div class="map"></div>
+          <div class="map">
+            <iframe
+              src="https://www.google.com/maps?q=Sedanstrasse+1,+32257+Bunde&output=embed"
+              allowfullscreen
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Google Maps Standort Sedanstrasse 1, 32257 Bunde">
+            </iframe>
+          </div>
         </div>
       </div>
     </section>
